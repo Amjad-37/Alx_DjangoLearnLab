@@ -1,2 +1,2 @@
-from bookshelf.models import Book; b = Book.objects.get(title="1984"); b.title = "Nineteen Eighty-Four"; b.save()
-# Output: b.title is now "Nineteen Eighty-Four"
+from bookshelf.models import Book; book = Book.objects.get(title="1984"); book.title = "Nineteen Eighty-Four"; book.save()
+# Output: book.title is now "Nineteen Eighty-Four"
