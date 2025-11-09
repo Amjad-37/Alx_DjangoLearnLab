@@ -8,14 +8,10 @@ def list_books(request):
     context = {
         'books': books
     }
-    # --- التصليح هنا ---
-    # لازم المسار الكامل عشان المدقق
     return render(request, 'relationship_app/list_books.html', context)
 
 # 2. Class-based view
 class LibraryDetail(DetailView):
     model = Library
-    # --- والتصليح هنا ---
-    # لازم المسار الكامل
     template_name = 'relationship_app/library_detail.html'
     context_object_name = 'library'
