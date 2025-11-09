@@ -1,1 +1,1 @@
-This is the README for my LibraryProject.
+My Django Project
