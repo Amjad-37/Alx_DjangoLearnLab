@@ -1,16 +1,20 @@
 from rest_framework import generics, viewsets
 from .models import Book
 from .serializers import BookSerializer
+from rest_framework.permissions import IsAuthenticated
 
-# Existing View (Task 1)
+# Task 1 View
 class BookList(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
-# New ViewSet (Task 2)
+# Task 2 ViewSet (Modified for Task 3 Permissions)
 class BookViewSet(viewsets.ModelViewSet):
     """
-    A ViewSet for viewing and editing book instances.
+    ViewSet to handle CRUD operations for Books.
+    Requires Token Authentication.
     """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    # هنا بنحدد إن المستخدم لازم يكون مسجل دخول
+    permission_classes = [IsAuthenticated]
