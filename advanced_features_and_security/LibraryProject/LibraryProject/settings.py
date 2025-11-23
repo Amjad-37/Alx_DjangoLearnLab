@@ -151,3 +151,34 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Content Security Policy (CSP) - Basic setup
 CSP_DEFAULT_SRC = ("'self'",)
+
+# --- TASK 3: HTTPS and Secure Headers ---
+
+# 1. Enforce HTTPS Redirect
+# Redirect all non-HTTPS requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# 2. HSTS Settings
+# Instruct browsers to only access the site via HTTPS for 1 year (31536000 seconds)
+SECURE_HSTS_SECONDS = 31536000
+# Include all subdomains in the HSTS policy
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# Allow preloading of HSTS
+SECURE_HSTS_PRELOAD = True
+
+# 3. Secure Cookies
+# Ensure session cookies are only transmitted over HTTPS
+SESSION_COOKIE_SECURE = True
+# Ensure CSRF cookies are only transmitted over HTTPS
+CSRF_COOKIE_SECURE = True
+
+# 4. Secure Headers
+# Prevent the site from being framed (Clickjacking protection)
+X_FRAME_OPTIONS = 'DENY'
+# Prevent MIME-sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+# Enable XSS filtering in the browser
+SECURE_BROWSER_XSS_FILTER = True
+
+# Proxy Setup (Required for many hosting environments including ALX)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
