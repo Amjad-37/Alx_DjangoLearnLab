@@ -2,14 +2,12 @@
 
 ## Permissions and Groups
 
-### Custom Permissions
+### Custom Permissions (In bookshelf app)
 - can_view
 - can_create
 - can_edit
 - can_delete
 
-### Groups
-- Admins
-- Editors
-- Viewers
+### Views
+- bookshelf/views.py handles the permission checks.
 
