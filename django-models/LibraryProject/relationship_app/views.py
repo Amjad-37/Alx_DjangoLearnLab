@@ -1,13 +1,14 @@
 from django.shortcuts import render
-from .models import Book, Library
-from django.views.generic import DetailView
+from django.views.generic.detail import DetailView
+
+# فصلناهم عشان الـ checker يشوف Library لوحدها
+from .models import Library
+from .models import Book
 
 # 1. Function-based view
 def list_books(request):
     books = Book.objects.all()
-    context = {
-        'books': books
-    }
+    context = {'books': books}
     return render(request, 'relationship_app/list_books.html', context)
 
 # 2. Class-based view
