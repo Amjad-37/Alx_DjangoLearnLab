@@ -1,15 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import permission_required
 from .models import Book
-from .forms import BookForm  # هنستخدم الفورم اللي عملناه قبل كده
+from .forms import BookForm
 
-# 1. View View (Requires can_view)
 @permission_required('relationship_app.can_view', raise_exception=True)
 def book_list(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
-# 2. Create View (Requires can_create)
 @permission_required('relationship_app.can_create', raise_exception=True)
 def add_book(request):
     if request.method == "POST":
@@ -21,7 +19,6 @@ def add_book(request):
         form = BookForm()
     return render(request, 'relationship_app/add_book.html', {'form': form})
 
-# 3. Edit View (Requires can_edit)
 @permission_required('relationship_app.can_edit', raise_exception=True)
 def edit_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
@@ -34,7 +31,6 @@ def edit_book(request, pk):
         form = BookForm(instance=book)
     return render(request, 'relationship_app/edit_book.html', {'form': form, 'book': book})
 
-# 4. Delete View (Requires can_delete)
 @permission_required('relationship_app.can_delete', raise_exception=True)
 def delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
